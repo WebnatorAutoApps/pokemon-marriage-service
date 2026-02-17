@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
+/* Pokemon Theme Color Palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fef9f0;
+  --foreground: #1a1a2e;
+
+  /* Pokemon primary colors */
+  --pokemon-red: #e3350d;
+  --pokemon-red-dark: #c62d0a;
+  --pokemon-red-light: #ff5a3a;
+  --pokemon-yellow: #f5d623;
+  --pokemon-yellow-dark: #dbbf10;
+  --pokemon-yellow-light: #ffe566;
+  --pokemon-blue: #3b5ca8;
+  --pokemon-blue-dark: #2d4a8a;
+  --pokemon-blue-light: #5b7fd4;
+  --pokemon-black: #1a1a2e;
+  --pokemon-white: #ffffff;
+  --pokemon-gray: #919191;
+  --pokemon-gray-light: #f0ece4;
+  --pokemon-gray-dark: #4a4a5a;
+
+  /* Pokeball colors */
+  --pokeball-red: #e3350d;
+  --pokeball-white: #ffffff;
+  --pokeball-black: #1a1a2e;
+  --pokeball-band: #2d2d3e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #16162a;
+    --foreground: #f0ece4;
+
+    --pokemon-gray-light: #222240;
+    --pokemon-gray-dark: #b0b0c0;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-pokemon-red: var(--pokemon-red);
+  --color-pokemon-red-dark: var(--pokemon-red-dark);
+  --color-pokemon-red-light: var(--pokemon-red-light);
+  --color-pokemon-yellow: var(--pokemon-yellow);
+  --color-pokemon-yellow-dark: var(--pokemon-yellow-dark);
+  --color-pokemon-yellow-light: var(--pokemon-yellow-light);
+  --color-pokemon-blue: var(--pokemon-blue);
+  --color-pokemon-blue-dark: var(--pokemon-blue-dark);
+  --color-pokemon-blue-light: var(--pokemon-blue-light);
+  --color-pokemon-black: var(--pokemon-black);
+  --color-pokemon-white: var(--pokemon-white);
+  --color-pokemon-gray: var(--pokemon-gray);
+  --color-pokemon-gray-light: var(--pokemon-gray-light);
+  --color-pokemon-gray-dark: var(--pokemon-gray-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pokemon diagonal stripe background pattern */
+.pokemon-bg-pattern {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(227, 53, 13, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(59, 92, 168, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 20%, rgba(245, 214, 35, 0.04) 0%, transparent 50%);
+}
+
+/* Pokeball divider line */
+.pokeball-divider {
+  position: relative;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--pokemon-red),
+    var(--pokemon-yellow),
+    var(--pokemon-blue)
+  );
+}
+
+/* Pokemon-style button base */
+.pokemon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -3px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-btn:active {
+  transform: translateY(0px);
+}
+
+.pokemon-btn-primary {
+  background: linear-gradient(135deg, var(--pokemon-red), var(--pokemon-red-dark));
+  color: white;
+  border: 2px solid var(--pokemon-red-dark);
+}
+
+.pokemon-btn-primary:hover {
+  background: linear-gradient(135deg, var(--pokemon-red-light), var(--pokemon-red));
+}
+
+.pokemon-btn-secondary {
+  background: linear-gradient(135deg, var(--pokemon-blue), var(--pokemon-blue-dark));
+  color: white;
+  border: 2px solid var(--pokemon-blue-dark);
+}
+
+.pokemon-btn-secondary:hover {
+  background: linear-gradient(135deg, var(--pokemon-blue-light), var(--pokemon-blue));
+}
+
+/* Pokemon card style */
+.pokemon-card {
+  background: var(--pokemon-white);
+  border: 3px solid var(--pokemon-yellow);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pokemon-card {
+    background: #1e1e3a;
+    border-color: var(--pokemon-yellow-dark);
+  }
+}
+
+/* Pokeball spinner animation */
+@keyframes pokeball-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pokeball-wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 3s ease-in-out 1.5s infinite;
+}
+
+/* Pokemon-style heading with text stroke effect */
+.pokemon-title {
+  background: linear-gradient(135deg, var(--pokemon-yellow), var(--pokemon-yellow-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(2px 2px 0 var(--pokemon-blue));
+}
+
+/* Heart animation for marriage theme */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
 }

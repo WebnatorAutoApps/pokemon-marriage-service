@@ -1,18 +1,27 @@
 import Link from "next/link";
+import PokeballIcon from "./PokeballIcon";
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+    <header className="w-full bg-pokemon-red dark:bg-pokemon-red-dark">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-          Pokemon Marriage Service
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-xl font-bold tracking-tight text-white"
+        >
+          <PokeballIcon className="h-7 w-7" />
+          <span>Pokemon Marriage Service</span>
         </Link>
-        <nav className="flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-          <Link href="/" className="transition-colors hover:text-zinc-900 dark:hover:text-zinc-50">
+        <nav className="flex items-center gap-6 text-sm font-semibold uppercase tracking-wider text-white/80">
+          <Link
+            href="/"
+            className="transition-colors hover:text-pokemon-yellow"
+          >
             Home
           </Link>
         </nav>
       </div>
+      <div className="pokeball-divider" />
     </header>
   );
 }
