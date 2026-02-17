@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import PokeballIcon from "./PokeballIcon";
 import HeartIcon from "./HeartIcon";
@@ -63,10 +64,10 @@ export default function Hero() {
       {/* CTA buttons */}
       <ScrollReveal direction="up" delay={400}>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <a href="#" className="pokemon-btn pokemon-btn-primary">
+          <Link href="/license" className="pokemon-btn pokemon-btn-primary">
             <PokeballIcon className="h-4 w-4" />
             Get Started
-          </a>
+          </Link>
           <a href="#" className="pokemon-btn pokemon-btn-secondary">
             Learn More
           </a>
