@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Pokemon Marriage Service",
-  description: "The premier service for Pokemon companionship and matchmaking.",
+  description:
+    "The premier service for Pokemon companionship and matchmaking.",
 };
 
 export default function RootLayout({
