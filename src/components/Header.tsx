@@ -19,6 +19,12 @@ export default function Header() {
           >
             Home
           </Link>
+          <Link
+            href="/license"
+            className="transition-colors hover:text-pokemon-yellow"
+          >
+            Marriage License
+          </Link>
         </nav>
       </div>
       <div className="pokeball-divider" />
